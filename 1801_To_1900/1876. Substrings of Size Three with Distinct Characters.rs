@@ -1,15 +1,13 @@
 impl Solution {
     pub fn count_good_substrings(s: String) -> i32 {
-        let mut result = 0;
-        let vec: Vec<char> = s.chars().collect();
-        if vec.len() < 3 {
-            return 0;
-        }
-        for i in 0..vec.len() - 2 {
-            if vec[i] != vec[i + 1] && vec[i] != vec[i + 2] && vec[i + 1] != vec[i + 2] {
-                result += 1;
+        let s: Vec<char> = s.chars().collect();
+        let mut num = 0;
+        for index in 0..s.len().saturating_sub(2) {
+            if s[index] != s[index + 1] && s[index + 1] != s[index + 2] && s[index] != s[index + 2] {
+                num += 1;
             }
         }
-        result
+
+        num
     }
 }
